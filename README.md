@@ -1,40 +1,35 @@
 [![MCHP](images/microchip.png)](https://www.microchip.com)
 
-# pymcuprog - Python MCU programmer
-pymcuprog is a Python utility for programming various Microchip MCU devices using Microchip CMSIS-DAP based debuggers
+# mcuprog - Microchip MCU programmer
+mcuprog is a Python utility for programming various Microchip MCU devices using Microchip CMSIS-DAP based debuggers
 
-Install using pip from [pypi](https://pypi.org/project/pymcuprog):
-```bash
-pip install pymcuprog
-```
-
-Browse source code on [github](https://github.com/microchip-pic-avr-tools/pymcuprog)
+Browse source code on [github](https://github.com/caddish12/mcuprog)
 
 Read API documentation on [github](https://microchip-pic-avr-tools.github.io/pymcuprog)
 
 ## Usage
-pymcuprog can be used as a command-line interface or a library
+mcuprog can be used as a command-line interface or a library
 
 ### CLI examples
-When installed using pip, pymcuprog CLI is located in the Python scripts folder.
+When installed using pip, mcuprog CLI is located in the Python scripts folder.
 
 Example 1: test connectivity by reading the device ID using Curiosity Nano:
 ```bash
-pymcuprog ping
+mcuprog ping
 ```
 
 Example 2: write contents of a hexfile to flash using Curiosity Nano:
 ```bash
-pymcuprog write -f app.hex
+mcuprog write -f app.hex
 ```
 
-For more examples see [pymcuprog on pypi.org](https://pypi.org/project/pymcuprog/)
+For more examples see [on pypi.org](https://pypi.org/project/pymcuprog/)
 
 ### Library usage example
-pymcuprog can be used as a library using its backend API.  For example:
+mcuprog can be used as a library using its backend API.  For example:
 ```python
 """
-Example usage of pymcuprog as a library to read the device ID
+Example usage of mcuprog as a library to read the device ID
 """
 # pymcuprog uses the Python logging module
 import logging
@@ -64,10 +59,10 @@ print ("Device ID is {0:06X}".format(int.from_bytes(device_id, byteorder="little
 ```
 
 ## Supported devices and tools
-pymcuprog is primarily intended for use with PKOB nano (nEDBG) debuggers which are found on Curiosity Nano kits and other development boards.  This means that it is continuously tested with a selection of AVR devices with UPDI interface as well as a selection of PIC devices.  However since the protocol is compatible between all EDBG-based debuggers (pyedbglib) it is possible to use pymcuprog with a wide range of debuggers and devices, although not all device families/interfaces have been implemented.
+mcuprog is primarily intended for use with PKOB nano (nEDBG) debuggers which are found on Curiosity Nano kits and other development boards.  This means that it is continuously tested with a selection of AVR devices with UPDI interface as well as a selection of PIC devices.  However since the protocol is compatible between all EDBG-based debuggers (pyedbglib) it is possible to use pymcuprog with a wide range of debuggers and devices, although not all device families/interfaces have been implemented.
 
 ### Debuggers / Tools
-pymcuprog supports:
+mcuprog supports:
 * PKOB nano (nEDBG) - on-board debugger on Curiosity Nano
 * MPLAB PICkit 4 In-Circuit Debugger (when in 'AVR mode')
 * MPLAB Snap In-Circuit Debugger (when in 'AVR mode')
@@ -80,7 +75,7 @@ pymcuprog supports:
 Although not all functionality is provided on all debuggers/boards.  See device support section below.
 
 ### Devices
-pymcuprog supports:
+mcuprog supports:
 * All UPDI devices, whether mounted on kits or standalone
 * PIC devices mounted on Curiosity Nano kits, or similar board with PKOB nano (nEDBG) debugger
 
@@ -89,7 +84,7 @@ Other devices (eg ATmega328P, ATsamd21e18a) may be partially supported for exper
 ## Notes for Linux® systems
 This package uses pyedbglib and other libraries for USB transport and some udev rules are required.  For details see the pyedbglib package: https://pypi.org/project/pyedbglib
 
-# Build instruction
+# Build Windows executable file instruction
 ```bash
 python setup.py build_exe
 ```

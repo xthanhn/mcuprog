@@ -25,7 +25,7 @@ with open(path.join(here, 'pypi.md'), 'rb') as f:
     long_description = f.read().decode("utf-8").replace('\r\n', '\n')
 
 # Set the package name:
-name = 'pymcuprog'
+name = 'mcuprog'
 
 """
 Package version :
@@ -48,10 +48,8 @@ PACKAGE_VERSION = {
 version = "{}.{}.{}.{}".format(PACKAGE_VERSION['major'], PACKAGE_VERSION['minor'], PACKAGE_VERSION['patch'], PACKAGE_VERSION['build'])
 print("Building {} version: {}".format(name, version))
 
-install_path = 'C:\Program Files\mcuprog-{}'.format(version)
-
 # Create a "version.py" file in the package
-fname = "{}/version.py".format(name)
+fname = "pymcuprog/version.py"
 with open(path.join(here, fname), 'w') as f:
     f.write("\"\"\" This file was generated when {} was built \"\"\"\n".format(name))
     f.write("VERSION = '{}'\n".format(version))

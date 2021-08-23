@@ -118,7 +118,7 @@ pip install cx_freeze
 ```
 Change working directory to source code folder and run
 ```bash
-python setup.py build_exe
+python build.py build_exe
 ```
 Go to **build/exe.win-xxx** folder and run **runme.bat** and enjoy!
 

@@ -24,7 +24,7 @@ from os import getenv
 from pymcuprog import pymcuprog_main
 from pymcuprog.pymcuprog_main import WRITE_TO_HEX_MEMORIES
 from pymcuprog.deviceinfo.memorynames import MemoryNames, MemoryNameAliases
-
+from pymcuprog.version import VERSION
 def setup_logging(user_requested_level=logging.WARNING, default_path='logging.yaml',
                   env_key='MICROCHIP_PYTHONTOOLS_CONFIG'):
     """
@@ -108,7 +108,8 @@ def main():
     """
 
     print(" ################################################################")
-    print(" #             Protek Industries - UPDI programming             #")
+    print(" #                    mcuprog updi programmer                   #")
+    print(' #                       Version: {}                     #'.format(VERSION))
     print(" #                      Modified by Bunny91                     #")
     print(" ################################################################")
     print(" ")

@@ -1,4 +1,4 @@
-# **mcuprog updi programmer**
+# **MCUprog UPDI Programmer**
 mcuprog is a modified utility for programming various Microchip MCU devices using Microchip CMSIS-DAP based debuggers and standard TTL serial port.
 
 I made this modified using for my personal project and focus on UPDI programming interface only, so I name it as mcuprog updi programmer, but it can be used to program PIC MCU and MCU with another programming interface type.

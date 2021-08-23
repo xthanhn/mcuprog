@@ -108,9 +108,9 @@ def main():
     """
 
     print(" ################################################################")
-    print(" #                    MCUprog UPDI Programmer                   #")
-    print(' #                       Version: {}                     #'.format(VERSION))
-    print(" #                      Modified by Bunny91                     #")
+    print(" #                        MCUprog UPDI                          #")
+    print(' #                         Version: {}                   #'.format(VERSION))
+    print(" #                         Modified by xthanhn                  #")
     print(" ################################################################")
     print(" ")
 

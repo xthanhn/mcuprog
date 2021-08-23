@@ -1,18 +1,18 @@
-# **MCUprog UPDI Programmer**
-mcuprog is a modified utility for programming various Microchip MCU devices using Microchip CMSIS-DAP based debuggers and standard TTL serial port.
+# **MCUprog UPDI**
+MCUprog UPDI is a modified utility for programming various Microchip MCU devices using Microchip CMSIS-DAP based debuggers and standard TTL serial port.
 
-I made this modified using for my personal project and focus on UPDI programming interface only, so I name it as mcuprog updi programmer, but it can be used to program PIC MCU and MCU with another programming interface type.
+I made this modified using for my personal project and focus on UPDI programming interface only, so I name it as MCUprog UPDI, but it can be used to program PIC MCU and MCU with another programming interface type.
 
-mcuprog is released as windows executable file (exe) - checkout [**releases**](https://github.com/caddish12/mcuprog/releases). You can use them directly on windows without Python.
+MCUprog UPDI is released as windows executable file (exe) - checkout [**releases**](https://github.com/caddish12/mcuprog/releases). You can use them directly on windows without Python.
 
-mcuprog supports newest MCU from microchip. It works well with new AVR 0-Series, 1-Series and 2-Series using UPDI programming interface.
+MCUprog UPDI supports newest MCU from microchip. It works well with new AVR 0-Series, 1-Series and 2-Series using UPDI programming interface.
 
 ### Notice
 This code is used to build Windows application and does not compatible original build.
 
 ### Serial UPDI
 
-mcuprog can be used as **Serial UPDI programmer** with UPDI interface using a **standard TTL serial port**
+MCUprog UPDI can be used as **Serial UPDI programmer** using a **standard TTL serial port**
 
 If you use [MegaTinyCore by SpenceKonde](https://github.com/SpenceKonde/megaTinyCore) version from 2.3.2, programming speed can be as high as **460800 baud**. Checkout [docs for SerialDUPI](https://github.com/SpenceKonde/megaTinyCore/blob/master/megaavr/tools/README.md) from SpenceKonde
 
@@ -54,10 +54,10 @@ Vcc                     Vcc                     Vcc
 ```
 
 ### Usage
-mcuprog can be used as a command-line interface. GUI version will release soon.
+MCUprog UPDI can be used as a command-line interface. GUI version will release soon.
 
 ### CLI examples
-When installed using pip, mcuprog CLI is located in the Python scripts folder.
+When installed using pip, MCUprog UPDI CLI is located in the Python scripts folder.
 
 Example 1: test connectivity by reading the device ID using Curiosity Nano:
 ```bash
@@ -89,10 +89,10 @@ mcuprog getvoltage
 For more examples see [on pypi.org](https://pypi.org/project/pymcuprog/)
 
 ### Supported devices and tools
-mcuprog is primarily intended for use with PKOB nano (nEDBG) debuggers which are found on Curiosity Nano kits and other development boards.  This means that it is continuously tested with a selection of AVR devices with UPDI interface as well as a selection of PIC devices.  However since the protocol is compatible between all EDBG-based debuggers (pyedbglib) it is possible to use mcuprog with a wide range of debuggers and devices, although not all device families/interfaces have been implemented.
+MCUprog UPDI is primarily intended for use with PKOB nano (nEDBG) debuggers which are found on Curiosity Nano kits and other development boards.  This means that it is continuously tested with a selection of AVR devices with UPDI interface as well as a selection of PIC devices.  However since the protocol is compatible between all EDBG-based debuggers (pyedbglib) it is possible to use MCUprog UPDI with a wide range of debuggers and devices, although not all device families/interfaces have been implemented.
 
 ### Debuggers / Tools
-mcuprog supports:
+MCUprog UPDI supports:
 * PKOB nano (nEDBG) - on-board debugger on Curiosity Nano
 * MPLAB PICkit 4 In-Circuit Debugger (when in 'AVR mode')
 * MPLAB Snap In-Circuit Debugger (when in 'AVR mode')
@@ -105,7 +105,7 @@ mcuprog supports:
 Although not all functionality is provided on all debuggers/boards.  See device support section below.
 
 ### Devices
-mcuprog supports:
+MCUprog UPDI supports:
 * All UPDI devices, whether mounted on kits or standalone
 * PIC devices mounted on Curiosity Nano kits, or similar board with PKOB nano (nEDBG) debugger
 

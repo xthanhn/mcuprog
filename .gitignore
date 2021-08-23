@@ -1,1 +1,4 @@
 runme.bat
+.vscode/launch.json
+.gitignore
+**/__pycache__

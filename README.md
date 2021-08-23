@@ -19,9 +19,9 @@ If you use [MegaTinyCore by SpenceKonde](https://github.com/SpenceKonde/megaTiny
 Example connection, for detailes please check above link. Be sure to connect a common ground, and use a TTL serial adapter running at the same voltage as the AVR device
 
 ```bash
-Vcc                     Vcc                    Vcc
-+-+                     +-+                    +-+
- |                       |                      |
+Vcc                     Vcc                     Vcc
++-+                     +-+                     +-+
+ |                      |                       |
 +---------------------+ |                       | +--------------------+
 | Serial port         +-+                       +-+  AVR device        |
 |                     |      +----------+         |                    |

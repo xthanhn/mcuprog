@@ -1,14 +1,60 @@
-[![MCHP](images/microchip.png)](https://www.microchip.com)
+# **mcuprog updi programmer**
+mcuprog is a modified utility for programming various Microchip MCU devices using Microchip CMSIS-DAP based debuggers and standard TTL serial port.
 
-# mcuprog - Microchip MCU programmer
-mcuprog is a Python utility for programming various Microchip MCU devices using Microchip CMSIS-DAP based debuggers
+I made this modified using for my personal project and focus on UPDI programming interface only, so I name it as mcuprog updi programmer, but it can be used to program PIC MCU and MCU with another programming interface type.
 
-Browse source code on [github](https://github.com/caddish12/mcuprog)
+mcuprog is released as windows executable file (exe) - checkout [**releases**](https://github.com/caddish12/mcuprog/releases). You can use them directly on windows without Python.
 
-Read API documentation on [github](https://microchip-pic-avr-tools.github.io/pymcuprog)
+mcuprog supports newest MCU from microchip. It works well with new AVR 0-Series, 1-Series and 2-Series using UPDI programming interface.
 
-## Usage
-mcuprog can be used as a command-line interface or a library
+### Notice
+This code is used to build Windows application and does not compatible original build.
+
+### Serial UPDI
+
+mcuprog can be used as **Serial UPDI programmer** with UPDI interface using a **standard TTL serial port**
+
+If you use [MegaTinyCore by SpenceKonde](https://github.com/SpenceKonde/megaTinyCore) version from 2.3.2, programming speed can be as high as **460800 baud**. Checkout [docs for SerialDUPI](https://github.com/SpenceKonde/megaTinyCore/blob/master/megaavr/tools/README.md) from SpenceKonde
+
+Example connection, for detailes please check above link. Be sure to connect a common ground, and use a TTL serial adapter running at the same voltage as the AVR device
+
+```bash
+Vcc                     Vcc                    Vcc
++-+                     +-+                    +-+
+ |                       |                      |
++---------------------+ |                       | +--------------------+
+| Serial port         +-+                       +-+  AVR device        |
+|                     |      +----------+         |                    |
+|                  TX +------+  1k-4.7k +---------+ UPDI               |
+|                     |      +----------+    |    |                    |
+|                     |                      |    |                    |
+|                  RX +----------------------+    |                    |
+|                     |                           |                    |
+|                     +--+---------------------+--+                    |
++---------------------+  |                     |  +--------------------+
+                        +-+                   +-+
+                        GND                   GND                        
+```
+
+### Pickit 4 UPDI
+```bash
+                                         Vcc
+                                         +-+
+                                           |
+        +---------------------+            |  |-------------------+
+        | Pickit4       2-VDD +------------+--+   AVR device      |
+        |                     |               |                   |
+        |               3-GND +---------------+ GND               |
+|USB|---|                     |               |                   |
+        |               4-PGD +---------------+ UPDI              |
+        |                     |               |                   |
+        |                     |               |                   |
+        +---------------------+               |-------------------+
+
+```
+
+### Usage
+mcuprog can be used as a command-line interface. GUI version will release soon.
 
 ### CLI examples
 When installed using pip, mcuprog CLI is located in the Python scripts folder.
@@ -17,49 +63,33 @@ Example 1: test connectivity by reading the device ID using Curiosity Nano:
 ```bash
 mcuprog ping
 ```
-
 Example 2: write contents of a hexfile to flash using Curiosity Nano:
 ```bash
 mcuprog write -f app.hex
 ```
+Example 3: interface with UPDI using pickit4 and erase flash
+```bash
+mcuprog -d attiyy1626 erase
+```
+Example 4: interface with UPDI using TTL serial port
+```bash
+mcuprog -i uart -u com1 -c 115200 -d attiny1626 reset
+```
+
+Example 5: write content of hexfile to flash
+```bash
+mcuprog -i uart -u com1 -c 115200 -d attiny1626 write -f app.hex
+```
+
+Example 6: get voltage of devices using pickit4
+```bash
+mcuprog getvoltage
+```
 
 For more examples see [on pypi.org](https://pypi.org/project/pymcuprog/)
 
-### Library usage example
-mcuprog can be used as a library using its backend API.  For example:
-```python
-"""
-Example usage of mcuprog as a library to read the device ID
-"""
-# pymcuprog uses the Python logging module
-import logging
-logging.basicConfig(format="%(levelname)s: %(message)s", level=logging.WARNING)
-
-# Configure the session
-from pymcuprog.backend import SessionConfig
-sessionconfig = SessionConfig("atmega4808")
-
-# Instantiate USB transport (only 1 tool connected)
-from pymcuprog.toolconnection import ToolUsbHidConnection
-transport = ToolUsbHidConnection()
-
-# Instantiate backend
-from pymcuprog.backend import Backend
-backend = Backend()
-
-# Connect to tool using transport
-backend.connect_to_tool(transport)
-
-# Start the session
-backend.start_session(sessionconfig)
-
-# Read the target device_id
-device_id = backend.read_device_id()
-print ("Device ID is {0:06X}".format(int.from_bytes(device_id, byteorder="little")))
-```
-
-## Supported devices and tools
-mcuprog is primarily intended for use with PKOB nano (nEDBG) debuggers which are found on Curiosity Nano kits and other development boards.  This means that it is continuously tested with a selection of AVR devices with UPDI interface as well as a selection of PIC devices.  However since the protocol is compatible between all EDBG-based debuggers (pyedbglib) it is possible to use pymcuprog with a wide range of debuggers and devices, although not all device families/interfaces have been implemented.
+### Supported devices and tools
+mcuprog is primarily intended for use with PKOB nano (nEDBG) debuggers which are found on Curiosity Nano kits and other development boards.  This means that it is continuously tested with a selection of AVR devices with UPDI interface as well as a selection of PIC devices.  However since the protocol is compatible between all EDBG-based debuggers (pyedbglib) it is possible to use mcuprog with a wide range of debuggers and devices, although not all device families/interfaces have been implemented.
 
 ### Debuggers / Tools
 mcuprog supports:
@@ -81,12 +111,17 @@ mcuprog supports:
 
 Other devices (eg ATmega328P, ATsamd21e18a) may be partially supported for experimental purposes
 
-## Notes for Linux® systems
-This package uses pyedbglib and other libraries for USB transport and some udev rules are required.  For details see the pyedbglib package: https://pypi.org/project/pyedbglib
-
-# Build Windows executable file instruction
+### Build instruction on Windows
+Open Command Prompt and run cx_freeze
+```bash
+pip install cx_freeze
+```
+Change working directory to source code folder and run
 ```bash
 python setup.py build_exe
 ```
-Go to build folder and run **copydevice.bat**
-Copy build folder to use with other computer
+Go to **build/exe.win-xxx** folder and run **runme.bat** and enjoy!
+
+### Origin Python version
+* Browse origin pymcuprog source code on [github](https://github.com/microchip-pic-avr-tools/pymcuprog)
+* Read API documentation on [github](https://microchip-pic-avr-tools.github.io/pymcuprog)

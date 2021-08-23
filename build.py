@@ -48,6 +48,8 @@ PACKAGE_VERSION = {
 version = "{}.{}.{}.{}".format(PACKAGE_VERSION['major'], PACKAGE_VERSION['minor'], PACKAGE_VERSION['patch'], PACKAGE_VERSION['build'])
 print("Building {} version: {}".format(name, version))
 
+install_path = 'C:\Program Files\mcuprog-{}'.format(version)
+
 # Create a "version.py" file in the package
 fname = "{}/version.py".format(name)
 with open(path.join(here, fname), 'w') as f:
@@ -113,5 +115,7 @@ setup(
             copyright='Protek Industries Co.,Ltd',
             target_name="mcuprog.exe", #change target name
     )],
-    options = { 'build_exe' : {'include_files' : ['pymcuprog/logging.yaml', 'pymcuprog/deviceinfo/devices','copydevice.bat']}},#"pymcuprog/deviceinfo/devices"
+    options = { 
+        'build_exe' : {'include_files' : ['pymcuprog/logging.yaml', 'pymcuprog/deviceinfo/devices','runme.bat']}, 
+    },
 )

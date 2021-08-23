@@ -110,12 +110,12 @@ setup(
     },
     executables = [
         Executable(
-            'pymcuprog\pymcuprog.py', #can not change
+            'pymcuprog/pymcuprog.py', #can not change
             base=None, 
             copyright='Protek Industries Co.,Ltd',
             target_name="mcuprog.exe", #change target name
     )],
     options = { 
-        'build_exe' : {'include_files' : ['pymcuprog/logging.yaml', 'pymcuprog/deviceinfo/devices','runme.bat']}, 
+        'build_exe' : {'include_files' : ['pymcuprog/logging.yaml', 'pymcuprog/deviceinfo/devices','tools/runme.bat']}, 
     },
 )

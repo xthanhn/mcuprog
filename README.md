@@ -1,14 +1,14 @@
 # **MCUprog UPDI**
-MCUprog UPDI is a modified utility for programming various Microchip MCU devices using Microchip CMSIS-DAP based debuggers and standard TTL serial port.
+MCUprog UPDI is a windows program with CLI and GUI, is used for programming various Microchip MCU devices using Microchip CMSIS-DAP based debuggers and standard TTL serial port.
 
-I made this modified using for my personal project and focus on UPDI programming interface only, so I name it as MCUprog UPDI, but it can be used to program PIC MCU and MCU with another programming interface type.
-
-MCUprog UPDI is released as windows executable file (exe) - checkout [**releases**](https://github.com/caddish12/mcuprog/releases). You can use them directly on windows without Python.
+I create this tool for my personal project and focus on UPDI programming interface only, so I name it as MCUprog UPDI.
 
 MCUprog UPDI supports newest MCU from microchip. It works well with new AVR 0-Series, 1-Series and 2-Series using UPDI programming interface.
 
+You can use it directly on windows without Python. Checkout [**releases**](https://github.com/caddish12/mcuprog/releases)
+
 ### Notice
-This code is used to build Windows application and does not compatible original build.
+This soruce code is modified and used to build Windows application. it does not compatible original build.
 
 ### Serial UPDI
 

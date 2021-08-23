@@ -129,24 +129,26 @@ def main():
     Usage examples:
 
         Ping a device on-board a kit:
-        - pymcuprog.py ping
+        - mcuprog ping
 
         Ping a device using Atmel-ICE
-        - pymcuprog.py -t atmelice -d atmega4809 -i updi ping
+        - mcuprog -t atmelice -d attiny1626 -i updi ping
 
         Read the some bytes of flash:
-        - pymcuprog.py read -m flash -o 0x80 -b 64
+        - mcuprog read -m flash -o 0x80 -b 64
 
         Erase an UPDI device:
-        - pymcuprog.py erase
+        - mcuprog erase
 
         Erase a locked UPDI device:
-        - pymcuprog.py erase --chip-erase-locked-device
+        - mcuprog erase --chip-erase-locked-device
 
         Set target supply voltage on a kit:
-        - pymcuprog.py setsupplyvoltage -l 3.3
+        - mcuprog setsupplyvoltage -l 3.3
+        
+        Serial UPDI using standard TTL serial port (FTDI, Profilic, Silicon Labs...)
+        - mcuprog -t uart -u com1 -c 115200 -d attiny1626 ping
             '''))
-
     parser.add_argument("action",
                         help="action to perform",
                         # This makes the action argument optional
